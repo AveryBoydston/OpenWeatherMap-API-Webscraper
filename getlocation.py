@@ -1,8 +1,8 @@
 #retrieves the latitude and logitude for any location
 import sys, re, requests
-from pickcomputer import directory
+from pickComputer import directory
 sys.path.insert(0, f'{directory}/')
-import Private.OWM_Weather_Notification.private as i
+import Private.OWMap.private as i
 #----------------------------------------------------------------
 OWM_KEY = i.OWMkey
 

@@ -1,13 +1,12 @@
 import sys,requests
 from pushbullet import PushBullet
 from datetime import datetime
-from pickcomputer import directory
+from pickComputer import directory
+sys.path.insert(0, f'{directory}')
 from createMessage import createmessage
 from getLocation import getlatlong
 from backupResults import BackupResults
-sys.path.insert(0, f'{directory}')
-import Private.OWM_Weather_Notification.private as i
-
+import Private.OWMap.private as i
 
 curr_time = datetime.now().strftime("%m-%d-%Y %I.%M%p")
 apiterms = { #converts inputted terms to accessible terms in the API results.
@@ -28,7 +27,7 @@ def chooselocation(): #Allowspeed the user to choose any location they want info
 def defaultCity():
     return i.set_location
 
-curr_city = chooselocation() #Change curr city selected
+curr_city = defaultCity() #Change curr city selected
 long,lat,city = curr_city[0], curr_city[1], curr_city[2]
 
 #----------------
@@ -114,4 +113,5 @@ def convertHour(time):
     else:
         return f"{int(time.strftime('%H'))}am"
 
-main()
+if __name__ == '__main__':
+    main()

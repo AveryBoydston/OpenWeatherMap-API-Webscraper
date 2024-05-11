@@ -1,9 +1,14 @@
-import sys
-from pickcomputer import directory
+import os,sys
+from pickComputer import directory
 sys.path.insert(0, f'{directory}')
 
 def BackupResults(d,convertHour,doc,city,curr_time,curr_hr,today_remaining_hrs):
-    save_folder = f"{directory}/Weather_API_webscraper/save files/openweathermap req savefiles"
+    current_directory = os.getcwd()
+    save_folder = os.path.join(current_directory, r'OWMap save files')
+    if not os.path.exists(save_folder):
+        os.makedirs(save_folder)
+    
+    # save_folder = f"{directory}/Weather_API_webscraper/save files/openweathermap req savefiles"
     with open(f'{save_folder}/{city} {curr_time}.txt',"a") as file:
 
         #Additional data
